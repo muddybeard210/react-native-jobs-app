@@ -1,12 +1,22 @@
 import React, { Component } from "react";
 import { View, Text } from "react-native";
+import { Button } from "react-native-elements";
 
 class ReviewScreen extends Component {
   state = {};
   //'navigationOptions' is a very specific name used for react navigation to pull out route specific customizations.  If you name this prop something else, it will not know to pull this data
-  static navigationOptions = {
-    headerTitle: "Review Jobs",
-    headerRight: <Text>Settings</Text>
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerTitle: "Review Jobs",
+      headerRight: (
+        <Button
+          title="Settings"
+          onPress={() => {
+            navigation.navigate("settings");
+          }}
+        />
+      )
+    };
   };
   render() {
     return (
