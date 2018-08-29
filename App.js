@@ -1,10 +1,15 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { createBottomTabNavigator } from "react-navigation";
+import {
+  createBottomTabNavigator,
+  createStackNavigator
+} from "react-navigation";
 import WelcomeScreen from "./screens/WelcomeScreen";
 import AuthScreen from "./screens/AuthScreen";
 import MapScreen from "./screens/MapScreen";
 import DeckScreen from "./screens/DeckScreen";
+import ReviewScreen from "./screens/ReviewScreen";
+import SettingsScreen from "./screens/SettingsScreen";
 
 export default class App extends React.Component {
   render() {
@@ -14,7 +19,11 @@ export default class App extends React.Component {
       main: {
         screen: createBottomTabNavigator({
           map: { screen: MapScreen },
-          deck: { screen: DeckScreen }
+          deck: { screen: DeckScreen },
+          review: createStackNavigator({
+            review: { screen: ReviewScreen },
+            settings: { screen: SettingsScreen }
+          })
         })
       }
     });
