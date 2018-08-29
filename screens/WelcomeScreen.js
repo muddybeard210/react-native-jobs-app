@@ -10,8 +10,14 @@ const SLIDE_DATA = [
 
 class WelcomeScreen extends Component {
   state = {};
+  onSlidesComplete = () => {
+    this.props.navigation.navigate("auth");
+  };
+
   render() {
-    return <Slides data={SLIDE_DATA} />;
+    return (
+      <Slides data={SLIDE_DATA} onSlidesComplete={this.onSlidesComplete} />
+    );
   }
 }
 
