@@ -20,10 +20,12 @@ export default class App extends React.Component {
         screen: createBottomTabNavigator({
           map: { screen: MapScreen },
           deck: { screen: DeckScreen },
-          review: createStackNavigator({
-            review: { screen: ReviewScreen },
-            settings: { screen: SettingsScreen }
-          })
+          review: {
+            screen: createStackNavigator({
+              review: { screen: ReviewScreen },
+              settings: { screen: SettingsScreen }
+            })
+          }
         })
       }
     });
