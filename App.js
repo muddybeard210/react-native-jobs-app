@@ -4,6 +4,8 @@ import {
   createBottomTabNavigator,
   createStackNavigator
 } from "react-navigation";
+import { Provider } from "react-redux";
+import store from "./store";
 import WelcomeScreen from "./screens/WelcomeScreen";
 import AuthScreen from "./screens/AuthScreen";
 import MapScreen from "./screens/MapScreen";
@@ -30,7 +32,11 @@ export default class App extends React.Component {
       }
     });
 
-    return <MainNavigator />;
+    return (
+      <Provider store={store}>
+        <MainNavigator />
+      </Provider>
+    );
   }
 }
 
