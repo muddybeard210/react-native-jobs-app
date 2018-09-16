@@ -15,22 +15,29 @@ import SettingsScreen from "./screens/SettingsScreen";
 
 export default class App extends React.Component {
   render() {
-    const MainNavigator = createBottomTabNavigator({
-      welcome: { screen: WelcomeScreen },
-      auth: { screen: AuthScreen },
-      main: {
-        screen: createBottomTabNavigator({
-          map: { screen: MapScreen },
-          deck: { screen: DeckScreen },
-          review: {
-            screen: createStackNavigator({
-              review: { screen: ReviewScreen },
-              settings: { screen: SettingsScreen }
-            })
-          }
-        })
+    const MainNavigator = createBottomTabNavigator(
+      {
+        welcome: { screen: WelcomeScreen },
+        auth: { screen: AuthScreen },
+        main: {
+          screen: createBottomTabNavigator({
+            map: { screen: MapScreen },
+            deck: { screen: DeckScreen },
+            review: {
+              screen: createStackNavigator({
+                review: { screen: ReviewScreen },
+                settings: { screen: SettingsScreen }
+              })
+            }
+          })
+        }
+      },
+      {
+        navigationOptions: {
+          tabBarVisible: false
+        }
       }
-    });
+    );
 
     return (
       <Provider store={store}>
